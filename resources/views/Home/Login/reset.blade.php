@@ -1,0 +1,1 @@
+<a href="http://myshop.com/reset?id={{$id}}&token={{$token}}">重置密码</a>

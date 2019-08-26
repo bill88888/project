@@ -1,0 +1,1 @@
+<a href="http://myshop.com/activate?id={{$id}}&token={{$token}}">用户激活</a>

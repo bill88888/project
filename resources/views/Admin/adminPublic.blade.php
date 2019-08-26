@@ -48,7 +48,7 @@
         
             <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
             <div id="mws-logo-wrap">
-                <img src="/static/images/3.2.png" alt="mws admin">
+                <a href="/admin"><img src="/static/images/3.2.png" alt="mws admin"></a>
             </div>
         </div>
         
@@ -188,12 +188,12 @@
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, John Doe
+                        欢迎您,{{session('adminname')}}
                     </div>
                     <ul>
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Change Password</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                        <li><a href="/adminlogin">退出</a></li>
                     </ul>
                 </div>
             </div>
@@ -231,16 +231,26 @@
                     <li>
                         <a href="#"><i class="icon-user"></i> 用户管理</a>
                         <ul class="closed">
-                            <li><a href="/users/create">用户添加</a></li>
-                            <li><a href="/users">用户列表</a></li>
+                            <li><a href="/adminusers/create">用户添加</a></li>
+                            <li><a href="/adminusers">用户列表</a></li>
                         </ul>
                     </li>
-
+                    <li>
+                        <a href="#"><i class="icon-user"></i> 后台管理员管理</a>
+                        <ul class="closed">
+                            <li><a href="/adminuser/create">管理员添加</a></li>
+                            <li><a href="/adminuser">管理员列表</a></li>
+                            <li><a href="/adminrole/create">管理角色添加</a></li>
+                            <li><a href="/adminrole">管理角色列表</a></li>
+                            <li><a href="/adminauth/create">角色权限添加</a></li>
+                            <li><a href="/adminauth">角色权限列表</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#"><i class="icon-th-list"></i> 分类管理</a>
                         <ul class="closed">
-                            <li><a href="">分类添加</a></li>
-                            <li><a href="">分类列表</a></li>
+                            <li><a href="/admincates/create">分类添加</a></li>
+                            <li><a href="/admincates">分类列表</a></li>
                         </ul>
                     </li>
 
@@ -255,23 +265,81 @@
                     <li>
                         <a href="#"><i class="icon-file"></i> 商品管理</a>
                         <ul class="closed">
-                            <li><a href="">商品添加</a></li>
-                            <li><a href="">商品列表</a></li>
+                            <li><a href="/adminshops/create">商品添加</a></li>
+                            <li><a href="/adminshops">商品列表</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-file"></i> 公告管理</a>
+                        <ul class="closed">
+                            <li><a href="/adminarticles/create">公告添加</a></li>
+                            <li><a href="/adminarticles">公告列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-file"></i> 订单管理</a>
+                        <ul class="closed">
+                            <li><a href="/adminorders">订单列表</a></li>
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#"><i class="icon-file"></i> 评价管理</a>
+                        <ul class="closed">
+                            <li><a href="/admineva">评价列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-file"></i> 轮播图管理</a>
+                        <ul class="closed">
+                            <li><a href="/adminlun/create">轮播图添加</a></li>
+                            <li><a href="/adminlun">轮播图列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-file"></i> 友情链接管理</a>
+                        <ul class="closed">
+                            <li><a href="/adminblogroll/create">友情链接添加</a></li>
+                            <li><a href="/adminblogroll">友情链接列表</a></li>
+                        </ul>
+                    </li> 
                 </ul>
             </div>         
         </div>
         
         <!-- Main Container Start -->
         <div id="mws-container" class="clearfix">
-        
+            
                 <div class="container">
+
+                    <!--成功-->
+                    @if(session('success'))
+                        <div class="mws-form-message success">
+                            {{session('success')}}
+                        </div>
+                    @endif
+                    <!--失败-->
+                    @if(session('error'))
+                        <div class="mws-form-message warning">
+                            {{session('error')}}
+                        </div>
+                    @endif
+                    
+                    @if(count($errors)>0)
+                        <div class="mws-form-message error">
+                            <ul>
+                                @foreach ($errors->all() as $error) 
+                                    <li>{{ $error }}</li> 
+                                @endforeach 
+                            </ul> 
+                        </div>
+                    @endif
+                
                 @section('main')
                 
-
-
+                
+        
                 @show
+
                 </div>
                 <!-- footer -->
                 <div id="mws-footer">
@@ -281,7 +349,7 @@
         <!-- Main Container End -->
         
     </div>
-
+    
     <!-- JavaScript Plugins -->
     <script src="/static/js/libs/jquery-1.8.3.min.js"></script>
     <script src="/static/js/libs/jquery.mousewheel.min.js"></script>
