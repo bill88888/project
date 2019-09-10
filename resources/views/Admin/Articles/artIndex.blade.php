@@ -25,12 +25,13 @@
      <table class="mws-datatable mws-table dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info"> 
       <thead> 
        <tr role="row">
-        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 140px;">操作</th>
-        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 193px;">Id</th>
-        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;">标题</th>
-        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;">作者</th>
+        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 120px;">操作</th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 120px;">Id</th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 120px;">标题</th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 120px;">作者</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 180px;">图片</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 120px;">内容</th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 120px;">分类</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 120px;">操作</th>
        </tr> 
       </thead> 
@@ -43,20 +44,20 @@
 	       		<td>{{$row['title']}}</td>
             <td>{{$row['author']}}</td> 
             <td><img src="{{$row['pic']}}"></td> 
-	       		<td>{!!$row['descr']!!}</td> 
+            <td>{!!$row['descr']!!}</td> 
+	       		<td>{{$row['cate']}}</td> 
             <td>
               <form action="/adminarticles/" method="post">
                 {{csrf_field()}}
                 {{method_field('delete')}}
               <a href="/adminarticles/{{$row['id']}}/edit" class="btn btn-info">修改</a>
               <input type="submit" value="删除" class="btn btn-danger">  
-       
               </form>
             </td> 
 	       </tr>
         @endforeach
          <tr>
-            <td colspan="7">
+            <td colspan="8">
                 <a href="javascript:void(0)" class="btn" id="id">全选</a>
                 <a href="javascript:void(0)" class="btn">全不选</a>
                 <a href="javascript:void(0)" class="btn">反选</a>  

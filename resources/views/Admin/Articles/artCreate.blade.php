@@ -40,6 +40,17 @@
        <div class="mws-form-item"> 
         <script id="editor" type="text/plain" name="descr" style="width:820px;height:500px;"> </script>
        </div> 
+      </div>
+       <div class="mws-form-row"> 
+       <label class="mws-form-label">分类:</label> 
+       <div class="mws-form-item"> 
+          <select name="cate">
+              <option>--请选择--</option>
+            @foreach($cates as $row)
+              <option value="{{$row->id}}">{{$row->name}}</option>
+            @endforeach
+          </select>
+       </div> 
       </div> 
      <div class="mws-button-row">
       {{csrf_field()}} 

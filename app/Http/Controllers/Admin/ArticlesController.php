@@ -62,7 +62,8 @@ class ArticlesController extends Controller
     public function create()
     {
         //公告添加
-        return view('Admin.Articles.artCreate');
+        $cates=CatesController::getCates(); 
+        return view('Admin.Articles.artCreate',['cates'=>$cates]);
     }
 
     /**
